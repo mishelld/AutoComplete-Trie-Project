@@ -62,12 +62,6 @@ class AutoCompleteTrie {
     }
   }
 }
-let trie = new AutoCompleteTrie();
-trie.addWord("run");
-trie.addWord("rick");
-
-trie.addWord("running");
-//console.log(trie.findWord("rick"));
-console.log(trie.predictWords("r"));
 
 //trie.print();
+module.exports = AutoCompleteTrie;
