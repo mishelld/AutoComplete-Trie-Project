@@ -35,12 +35,19 @@ class AutoCompleteTrie {
   predictWords(prefix) {
     let allWords = [];
     let node = this._getRemainingTree(prefix, this);
+    if (!node) {
+      return [];
+    }
     this._allWordsHelper(prefix, node, allWords);
     return allWords;
   }
   _getRemainingTree(prefix, node) {
     let i = 0;
     while (i < prefix.length) {
+      if (!node.children[prefix[i]]) {
+        console.log("No such prefix");
+        return null;
+      }
       node = node.children[prefix[i]];
       i++;
     }
