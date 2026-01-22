@@ -7,17 +7,27 @@ Commands:
   exit              - Quit program
 `;
 
-const printResult = function (command, word, arr = []) {
+const printResult = function (
+  command,
+  word = null,
+  arr = [],
+  wasFound = false,
+) {
   switch (command) {
     case "add":
       return `✓ Added '${word}' to dictionary`;
     case "complete":
-      return `Suggestions for '${word}':${arr}`;
+      return `Suggestions for '${word}': ${arr.join(", ")}`;
     case "find":
-      `✓ ${word} exists in dictionary`;
+      if (wasFound) {
+        return `✓ ${word} exists in dictionary`;
+      } else {
+        return `✗ ${word} not found in dictionary`;
+      }
     case "help":
       return helpMessage;
     case "exit":
       return `Goodbye!`;
   }
 };
+module.exports = { printResult };
