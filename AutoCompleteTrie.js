@@ -19,6 +19,19 @@ class AutoCompleteTrie {
     }
     node.endOfWord = true;
   }
+  findWord(word) {
+    let node = this;
+    let i = 0;
+    while (i < word.length) {
+      if (!node.children[word[i]]) {
+        return false;
+      } else {
+        node = node.children[word[i]];
+      }
+      i++;
+    }
+    return true;
+  }
 }
 let trie = new AutoCompleteTrie();
 trie.addWord("run");
